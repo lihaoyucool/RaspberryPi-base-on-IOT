@@ -6,7 +6,7 @@ use RaspberryPi to build interesting things.
 
 一、cloud
 
-1.use NATAPP 内网穿透
+1. use NATAPP 内网穿透
 2.UI(javascript ajax)
 3.springboot(java)
 4.mongoDB
