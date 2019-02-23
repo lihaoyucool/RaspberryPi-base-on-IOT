@@ -16,12 +16,18 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
 import org.springframework.messaging.MessagingException;
 
+import com.raspberry.raspberry.entity.SensorData;
+import com.raspberry.raspberry.repository.RaspberryMongoRepository;
+
 @Configuration
 @IntegrationComponentScan
 public class MqttReceiveConfig {
     
-    @Autowired MqttProperties mqttConfig;
-
+    @Autowired 
+    MqttProperties mqttConfig;
+    
+    @Autowired
+    RaspberryMongoRepository mongoRepository;
     @Bean
     public MqttPahoClientFactory mqttClientFactory() {
         DefaultMqttPahoClientFactory factory = new DefaultMqttPahoClientFactory();
@@ -64,6 +70,11 @@ public class MqttReceiveConfig {
                 String topic = message.getHeaders().get("mqtt_topic").toString();
                 if("Raspberry".equalsIgnoreCase(topic)){
                     System.out.println("Raspberry,fuckXX,"+message.getPayload().toString());
+                    SensorData data = new SensorData();
+                    data.setId("DHT11_1");
+                    data.setStatus("on");
+                    data.setNumber(message.getPayload().toString());
+                    mongoRepository.save(data);
                 }else if("default_topic".equalsIgnoreCase(topic)){
                     System.out.println("default_topic,fuckXX,"+message.getPayload().toString());
                 }

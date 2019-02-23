@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>IOT</title>
+</head>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+    $(function(){
+        function show(){
+           $.ajax({
+                url:"http://localhost:8080/raspberry/DHT11_1",
+                type:"GET",
+                timeout:10000,
+                success:function(data){
+                    console.log(data)
+                    $("#data").html(data.number);
+                }
+            });
+        }
+        setInterval(show,3000);
+
+        $("#btn").click(function(){
+            $.ajax({
+                 type: "PUT",
+                 url: "http://localhost:8080/raspberry/DHT11_1",
+                 contentType:"application/json",
+                 data: "{\"id\":\"DHT11_1\", \"number\": \""+$("#num").val()+"\", \"status\":\"on\"}",
+                 dataType:"json",
+                 success: function(data){
+                        console.log(data)
+                      }
+            });
+        }); 
+    });
+</script>
+<body>
+    <span>Sensor Data:</span>
+    <span id="data">0</span>
+    <br>
+    <input type="text" id="num" />
+    <button id="btn">click</button>
+</body>
+</html>

@@ -8,13 +8,13 @@ use RaspberryPi to build interesting things.
 
 1. use NATAPP 内网穿透
 * 用国内的平台，主要是不花钱。
-2. UI(javascript ajax)
+2. UI(javascript ajax) (done)
 * 这里先用原生的js开发，毕竟UI不是本项目主要关注的。
-3. springboot(java)
+3. springboot(java)  (done)
 * 使用springboot集成mongoDB进行开发，主要功能是实现web显示和订阅mqtt数据，储存数据。
-4. mongoDB
+4. mongoDB (done)
 * 这里用mongo作为数据库。
-5. MQTT Broker(mosquitto)
+5. MQTT Broker(mosquitto) (done)
 * 使用轻量级mqtt broker，简单可靠。
 
 
