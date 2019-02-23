@@ -1,11 +1,7 @@
 package com.raspberry.raspberry.config;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Data
 public class MqttInboundProperties {
     private String url;
@@ -13,6 +9,7 @@ public class MqttInboundProperties {
     private String password;
     private String clientId;
     private String topics;
+    private int completionTimeout;
     
     public String getUrl() {
         return url;
@@ -28,5 +25,27 @@ public class MqttInboundProperties {
     }
     public String getTopics() {
         return topics;
+    }
+    public int getCompletionTimeout() {
+        return completionTimeout;
+    }
+    
+    public void setUrl(String url) {
+        this.url = url;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+    public void setTopics(String topics) {
+        this.topics = topics;
+    }
+    public void setCompletionTimeout(int completionTimeout) {
+        this.completionTimeout = completionTimeout;
     }
 }

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ConfigurationProperties(prefix = "com.mqtt")
+
 public class MqttProperties {
     private MqttInboundProperties inbound;
     private MqttOutboundProperties outbound;

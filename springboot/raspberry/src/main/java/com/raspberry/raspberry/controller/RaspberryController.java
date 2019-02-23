@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.raspberry.raspberry.MongoRepository.RaspberryMongoRepository;
+import com.raspberry.raspberry.config.MqttGateway;
+import com.raspberry.raspberry.config.MqttProperties;
 import com.raspberry.raspberry.entity.SensorData;
 
 @Controller
@@ -21,10 +23,17 @@ public class RaspberryController {
     @Autowired
     RaspberryMongoRepository mongoRepository;
     
+    @Autowired
+    private MqttGateway mqttGateway;
+    
+    @Autowired 
+    MqttProperties mqttConfig;
+    
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public HttpHeaders create(@RequestBody SensorData asset) {
        HttpHeaders httpHeaders = new HttpHeaders();
+       mqttGateway.sendToMqtt(mqttConfig.getInbound().getTopics(), asset.getNumber());
        mongoRepository.save(asset);
        return httpHeaders;
     }
