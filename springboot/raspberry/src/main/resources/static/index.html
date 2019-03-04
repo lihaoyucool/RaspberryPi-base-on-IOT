@@ -8,7 +8,7 @@
     $(function(){
         function show(){
            $.ajax({
-                url:"http://localhost:8080/raspberry/DHT11_1",
+                url:"http://haoyul.natapp1.cc/raspberry/DHT11_1",
                 type:"GET",
                 timeout:10000,
                 success:function(data){
@@ -22,7 +22,7 @@
         $("#btn").click(function(){
             $.ajax({
                  type: "PUT",
-                 url: "http://localhost:8080/raspberry/DHT11_1",
+                 url: "http://haoyul.natapp1.cc/raspberry/DHT11_1",
                  contentType:"application/json",
                  data: "{\"id\":\"DHT11_1\", \"number\": \""+$("#num").val()+"\", \"status\":\"on\"}",
                  dataType:"json",
