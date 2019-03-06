@@ -6,8 +6,8 @@ use RaspberryPi to build interesting things.
 
 一、cloud(springboot)
 
-1. use NATAPP 内网穿透
-* 用内网穿透公司网络，在树莓派上跑。
+1. 使用百度云
+* 使用百度云作为服务器，关联域名haoyul.top
 2. UI(javascript ajax)
 * 这里先用原生的js开发，毕竟UI不是本项目主要关注的。
 3. springboot(java)
@@ -27,3 +27,9 @@ use RaspberryPi to build interesting things.
 
 
 现在所有部分最小demo已完成，进入下一个阶段。
+
+TODO：
+
+1. 实现web鉴权认证。
+2. 实现树莓派python mqtt发布和订阅。
+
